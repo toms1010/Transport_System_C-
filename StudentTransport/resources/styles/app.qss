@@ -74,8 +74,10 @@ QLabel#Banner {
     border-radius: 8px;
     padding: 10px 12px;
 }
+QFrame#HeroPanel { background: {{SIDEBAR}}; border: none; }
 QLabel#HeroTitle { color: {{SIDEBAR_TITLE}}; font-size: 22px; font-weight: 700; }
-QLabel#HeroSubtitle { color: {{SIDEBAR_MUTED}}; font-size: 12px; }
+QLabel#HeroSubtitle { color: {{SIDEBAR_MUTED}}; font-size: 15px; font-weight: 600; }
+QLabel#HeroTagline { color: {{SIDEBAR_TEXT}}; font-size: 12px; }
 
 /* ---------------- Buttons ---------------- */
 QPushButton {

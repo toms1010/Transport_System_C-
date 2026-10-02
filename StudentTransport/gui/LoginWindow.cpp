@@ -29,7 +29,7 @@ LoginWindow::LoginWindow(Controllers& controllers, QWidget* parent)
     outer->setSpacing(0);
 
     auto* hero = new QFrame;
-    hero->setStyleSheet("background: " + color::surface().name() + ";");
+    hero->setObjectName("HeroPanel");
     hero->setFixedHeight(200);
 
     auto* heroLayout = new QVBoxLayout(hero);
@@ -38,14 +38,14 @@ LoginWindow::LoginWindow(Controllers& controllers, QWidget* parent)
 
     auto* badge = new QLabel;
     badge->setPixmap(icon(QStringLiteral("transport")).pixmap(44, 44));
-    badge->setStyleSheet("color: " + color::primary().name() + ";");
+    badge->setStyleSheet("color: " + color::sidebarAccent().name() + ";");
 
     auto* brand = new QLabel(QStringLiteral("Student Transport"));
     brand->setObjectName("HeroTitle");
     auto* sub = new QLabel(QStringLiteral("Management System"));
     sub->setObjectName("HeroSubtitle");
     auto* tagline = new QLabel(qs(controllers_.context().config().config().tagline()));
-    tagline->setObjectName("Muted");
+    tagline->setObjectName("HeroTagline");
     tagline->setWordWrap(true);
 
     heroLayout->addWidget(badge);

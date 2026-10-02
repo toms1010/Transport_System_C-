@@ -77,6 +77,8 @@ QColor warningSoft();
 QColor danger();
 QColor dangerSoft();
 QColor tooltipText();
+QColor sidebarAccent();
+QColor sidebarPanel();
 }  // namespace color
 
 void applyTheme(QApplication& app);

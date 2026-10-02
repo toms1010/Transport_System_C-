@@ -154,6 +154,24 @@ if(ST_BUILD_GUI)
         )
 
         install(TARGETS transport_gui RUNTIME DESTINATION bin)
+
+        # Optional development tool that regenerates the screenshots in
+        # README.md and docs/. Off by default: it links every page only to drive
+        # them offscreen, which is not something the application needs.
+        option(ST_BUILD_GUI_CAPTURE "Build the screenshot capture tool" OFF)
+        if(ST_BUILD_GUI_CAPTURE)
+            set(ST_GUI_CAPTURE_SOURCES ${ST_GUI_SOURCES})
+            list(REMOVE_ITEM ST_GUI_CAPTURE_SOURCES gui/main.cpp)
+
+            add_executable(gui_capture tools/gui_capture.cpp ${ST_GUI_CAPTURE_SOURCES}
+                                        ${ST_GUI_HEADERS})
+            target_link_libraries(gui_capture PRIVATE transport_domain Qt6::Widgets
+                                                Qt6::PrintSupport)
+            target_include_directories(gui_capture PRIVATE
+                ${CMAKE_CURRENT_SOURCE_DIR}/gui
+                ${CMAKE_CURRENT_SOURCE_DIR}/include
+            )
+        endif()
     else()
         message(STATUS "Qt6 Widgets not found - skipping the transport_gui target.")
     endif()

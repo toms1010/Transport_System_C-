@@ -209,6 +209,8 @@ QColor warningSoft() { return activePalette().warningSoft; }
 QColor danger() { return activePalette().danger; }
 QColor dangerSoft() { return activePalette().dangerSoft; }
 QColor tooltipText() { return activePalette().tooltipText; }
+QColor sidebarAccent() { return activePalette().sidebarAccent; }
+QColor sidebarPanel() { return activePalette().sidebar; }
 }  // namespace color
 
 Palette activePalette() {

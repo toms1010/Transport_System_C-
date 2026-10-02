@@ -60,13 +60,18 @@ void AllotmentPage::build() {
 
     auto* grid = new QGridLayout;
     grid->setHorizontalSpacing(28);
-    grid->setVerticalSpacing(10);
+    grid->setVerticalSpacing(9);
+    grid->setColumnMinimumWidth(0, 130);
 
     const auto addRow = [&](int row, const QString& caption, QLabel** target) {
+        auto* captionLabel = new QLabel(caption.toUpper());
+        captionLabel->setObjectName("FieldLabel");
+
         *target = new QLabel;
         (*target)->setObjectName("FieldValue");
         (*target)->setWordWrap(true);
-        grid->addWidget(rowField(caption, QString()), row, 0);
+
+        grid->addWidget(captionLabel, row, 0);
         grid->addWidget(*target, row, 1);
     };
 
