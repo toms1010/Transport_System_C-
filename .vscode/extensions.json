@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-vscode.cpptools-extension-pack",
+    "kitware.cmake-tools"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode-2019.crunner"
+  ]
+}

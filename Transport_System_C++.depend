@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1654763223 source:c:\users\adones\downloads\c++ project\transport_system_c++\main.cpp
+	<fstream>
+	<iomanip>
+	<windows.h>
+	<conio.h>
+	<ctype.h>
+	<stdlib.h>
+	<iostream>
+	<cstring>
+	<stdio.h>
+

@@ -1,0 +1,260 @@
+/* Student Transport Management System - application stylesheet.
+ *
+ * Colours are never hardcoded in widgets. Every value below is a token that
+ * Theme substitutes from the active palette, so light and dark share this one
+ * file. Tokens are written as {{NAME}}.
+ */
+
+QWidget {
+    font-family: "Inter", "Segoe UI", "DejaVu Sans", sans-serif;
+    font-size: {{FONT_SIZE}}px;
+    color: {{TEXT}};
+    outline: none;
+}
+QMainWindow, QDialog { background: {{BG}}; }
+QToolTip {
+    background: {{TOOLTIP_BG}};
+    color: {{TOOLTIP_TEXT}};
+    border: none;
+    padding: 6px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+/* ---------------- Sidebar ---------------- */
+QFrame#Sidebar { background: {{SIDEBAR}}; border: none; }
+QLabel#BrandTitle { color: {{SIDEBAR_TITLE}}; font-size: 16px; font-weight: 700; }
+QLabel#BrandSubtitle { color: {{SIDEBAR_MUTED}}; font-size: 11px; letter-spacing: 1px; }
+QLabel#SidebarFooter { color: {{SIDEBAR_MUTED}}; font-size: 10px; font-weight: 700; }
+QLabel#SidebarUser { color: {{SIDEBAR_TEXT}}; font-size: 12px; font-weight: 600; }
+
+QPushButton#NavButton {
+    color: {{SIDEBAR_TEXT}};
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    border-radius: 0;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+}
+QPushButton#NavButton:hover { background: {{SIDEBAR_HOVER}}; color: {{SIDEBAR_TITLE}}; }
+QPushButton#NavButton:checked {
+    background: {{SIDEBAR_HOVER}};
+    color: {{SIDEBAR_TITLE}};
+    border-left: 3px solid {{SIDEBAR_ACCENT}};
+    font-weight: 700;
+}
+QPushButton#NavButton:focus { border-left: 3px solid {{SIDEBAR_ACCENT}}; }
+
+/* ---------------- Top bar ---------------- */
+QFrame#TopBar { background: {{SURFACE}}; border-bottom: 1px solid {{BORDER}}; }
+QLabel#UserName { font-size: 14px; font-weight: 700; color: {{TEXT}}; }
+QLabel#UserMeta { font-size: 11px; color: {{MUTED}}; }
+QLabel#WindowTitle { font-size: 15px; font-weight: 700; color: {{TEXT}}; }
+
+/* ---------------- Cards and typography ---------------- */
+QFrame#Card { background: {{SURFACE}}; border: 1px solid {{BORDER}}; border-radius: 10px; }
+QFrame#StatCard { background: {{SURFACE}}; border: 1px solid {{BORDER}}; border-radius: 10px; }
+QFrame#TintedCard { background: {{SURFACE_ALT}}; border: 1px solid {{BORDER}}; border-radius: 10px; }
+
+QLabel#PageTitle { font-size: 20px; font-weight: 700; color: {{TEXT}}; }
+QLabel#PageSubtitle { font-size: 12px; color: {{MUTED}}; }
+QLabel#SectionTitle { font-size: 13px; font-weight: 700; color: {{TEXT}}; }
+QLabel#StatValue { font-size: 24px; font-weight: 700; color: {{TEXT}}; }
+QLabel#StatLabel { font-size: 10px; color: {{MUTED}}; letter-spacing: 0.4px; }
+QLabel#Muted { color: {{MUTED}}; }
+QLabel#FieldLabel { color: {{MUTED}}; font-size: 10px; font-weight: 700; letter-spacing: 0.3px; }
+QLabel#FieldValue { color: {{TEXT}}; font-size: 13px; }
+QLabel#Banner {
+    background: {{PRIMARY_SOFT}};
+    color: {{PRIMARY}};
+    border: 1px solid {{PRIMARY_BORDER}};
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+QLabel#HeroTitle { color: {{SIDEBAR_TITLE}}; font-size: 22px; font-weight: 700; }
+QLabel#HeroSubtitle { color: {{SIDEBAR_MUTED}}; font-size: 12px; }
+
+/* ---------------- Buttons ---------------- */
+QPushButton {
+    background: {{SURFACE}};
+    color: {{TEXT}};
+    border: 1px solid {{BORDER_STRONG}};
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+}
+QPushButton:hover { background: {{SURFACE_ALT}}; border-color: {{PRIMARY}}; }
+QPushButton:pressed { background: {{BORDER}}; }
+QPushButton:focus { border-color: {{PRIMARY}}; }
+QPushButton:disabled { color: {{MUTED}}; background: {{SURFACE_ALT}}; border-color: {{BORDER}}; }
+
+QPushButton#PrimaryButton {
+    background: {{PRIMARY}}; color: #ffffff; border: 1px solid {{PRIMARY}};
+}
+QPushButton#PrimaryButton:hover { background: {{PRIMARY_HOVER}}; border-color: {{PRIMARY_HOVER}}; }
+QPushButton#PrimaryButton:disabled { background: {{PRIMARY_SOFT}}; border-color: {{BORDER}}; color: {{MUTED}}; }
+
+QPushButton#DangerButton { background: {{SURFACE}}; color: {{DANGER}}; border: 1px solid {{DANGER}}; }
+QPushButton#DangerButton:hover { background: {{DANGER_SOFT}}; }
+
+QPushButton#GhostButton { background: transparent; border: 1px solid transparent; color: {{PRIMARY}}; }
+QPushButton#GhostButton:hover { background: {{PRIMARY_SOFT}}; }
+QPushButton#GhostButton:disabled { background: transparent; border-color: transparent; color: {{MUTED}}; }
+QPushButton#LinkButton:disabled { color: {{MUTED}}; }
+
+QPushButton#LinkButton {
+    background: transparent; border: none; color: {{PRIMARY}};
+    padding: 4px; font-weight: 600; text-decoration: underline;
+}
+QPushButton#LinkButton:hover { color: {{PRIMARY_HOVER}}; }
+
+QPushButton#IconButton {
+    background: transparent; border: 1px solid transparent;
+    padding: 4px; border-radius: 4px;
+}
+QPushButton#IconButton:hover { background: {{SURFACE_ALT}}; border-color: {{BORDER}}; }
+
+/* ---------------- Seat grid ---------------- */
+QPushButton#SeatButton {
+    background: {{SURFACE}};
+    border: 1px solid {{BORDER_STRONG}};
+    border-radius: 6px;
+    padding: 0px;
+    font-size: 11px;
+    font-weight: 700;
+    color: {{TEXT}};
+}
+QPushButton#SeatButton:hover { border-color: {{PRIMARY}}; background: {{PRIMARY_SOFT}}; }
+QPushButton#SeatButton:focus { border-color: {{PRIMARY}}; }
+QPushButton#SeatButton[seatState="free"] { background: {{SEAT_FREE}}; color: {{TEXT}}; }
+QPushButton#SeatButton[seatState="taken"] { background: {{SEAT_TAKEN}}; color: {{MUTED}}; border-color: {{BORDER}}; }
+QPushButton#SeatButton[seatState="mine"] { background: {{SEAT_MINE}}; color: {{SUCCESS}}; border-color: {{SUCCESS_BORDER}}; }
+QPushButton#SeatButton[seatState="selected"] { background: {{PRIMARY}}; color: #ffffff; border-color: {{PRIMARY}}; }
+
+QFrame#DriverBox {
+    background: {{SURFACE_ALT}};
+    border: 1px dashed {{BORDER_STRONG}};
+    border-radius: 8px;
+}
+QLabel#DriverLabel { color: {{MUTED}}; font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+
+/* ---------------- Inputs ---------------- */
+QLineEdit, QTextEdit, QPlainTextEdit, QComboBox, QSpinBox, QDoubleSpinBox {
+    background: {{INPUT_BG}};
+    border: 1px solid {{BORDER_STRONG}};
+    border-radius: 6px;
+    padding: 7px 9px;
+    selection-background-color: {{PRIMARY}};
+    selection-color: #ffffff;
+}
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QComboBox:focus,
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border-color: {{PRIMARY}};
+    background: {{SURFACE}};
+}
+QLineEdit:disabled, QComboBox:disabled, QSpinBox:disabled, QPlainTextEdit:disabled {
+    background: {{SURFACE_ALT}}; color: {{MUTED}};
+}
+QLineEdit[invalid="true"] { border-color: {{DANGER}}; background: {{DANGER_SOFT}}; }
+QComboBox::drop-down { border: none; width: 22px; }
+QComboBox::down-arrow { image: url(:/icons/back.svg); width: 10px; height: 10px; }
+QComboBox QAbstractItemView {
+    background: {{SURFACE}};
+    border: 1px solid {{BORDER_STRONG}};
+    selection-background-color: {{PRIMARY_SOFT}};
+    selection-color: {{TEXT}};
+    outline: none;
+}
+QCheckBox, QRadioButton { color: {{TEXT}}; spacing: 7px; }
+QCheckBox::indicator, QRadioButton::indicator { width: 15px; height: 15px; }
+
+/* ---------------- Tables and lists ---------------- */
+QTableWidget, QTableView, QTreeWidget, QListWidget {
+    background: {{SURFACE}};
+    alternate-background-color: {{SURFACE_ALT}};
+    border: 1px solid {{BORDER}};
+    border-radius: 8px;
+    gridline-color: transparent;
+    selection-background-color: {{PRIMARY_SOFT}};
+    selection-color: {{TEXT}};
+}
+QTableWidget::item { padding: 6px; border: none; }
+QTableWidget::item:selected { background: {{PRIMARY_SOFT}}; color: {{TEXT}}; }
+QHeaderView::section {
+    background: {{HEADER_BG}};
+    color: {{MUTED}};
+    border: none;
+    border-bottom: 1px solid {{BORDER}};
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+QTableCornerButton::section { background: {{HEADER_BG}}; border: none; }
+
+/* ---------------- Tabs ---------------- */
+QTabWidget::pane { border: 1px solid {{BORDER}}; border-radius: 8px; background: {{SURFACE}}; top: -1px; }
+QTabBar::tab {
+    background: transparent; color: {{MUTED}};
+    padding: 8px 16px; margin-right: 2px;
+    border: none; border-bottom: 2px solid transparent;
+    font-size: 12px; font-weight: 600;
+}
+QTabBar::tab:hover { color: {{TEXT}}; }
+QTabBar::tab:selected { color: {{PRIMARY}}; border-bottom: 2px solid {{PRIMARY}}; }
+
+/* ---------------- Groups ---------------- */
+QGroupBox {
+    border: 1px solid {{BORDER}}; border-radius: 8px;
+    margin-top: 10px; padding-top: 10px; font-weight: 700; background: {{SURFACE}};
+}
+QGroupBox::title { subcontrol-origin: margin; left: 12px; padding: 0 4px; color: {{TEXT}}; }
+
+/* ---------------- Scrollbars ---------------- */
+QScrollArea { border: none; background: transparent; }
+QScrollBar:vertical { background: transparent; width: 10px; margin: 0; }
+QScrollBar::handle:vertical { background: {{SCROLL_HANDLE}}; border-radius: 5px; min-height: 30px; }
+QScrollBar::handle:vertical:hover { background: {{SCROLL_HANDLE_HOVER}}; }
+QScrollBar:horizontal { background: transparent; height: 10px; }
+QScrollBar::handle:horizontal { background: {{SCROLL_HANDLE}}; border-radius: 5px; min-width: 30px; }
+QScrollBar::add-line, QScrollBar::sub-line { width: 0; height: 0; }
+QScrollBar::add-page, QScrollBar::sub-page { background: transparent; }
+QSplitter::handle { background: transparent; }
+
+/* ---------------- Progress and status ---------------- */
+QProgressBar {
+    border: 1px solid {{BORDER}}; border-radius: 6px;
+    background: {{SURFACE_ALT}}; text-align: center; height: 8px;
+}
+QProgressBar::chunk { background: {{PRIMARY}}; border-radius: 5px; }
+
+QStatusBar { background: {{SURFACE}}; border-top: 1px solid {{BORDER}}; color: {{MUTED}}; }
+QFrame#Footer { background: {{SURFACE}}; border-top: 1px solid {{BORDER}}; }
+
+/* ---------------- Notifications ---------------- */
+QFrame#Toast {
+    background: {{TOAST_BG}};
+    border: 1px solid {{TOAST_BORDER}};
+    border-left: 4px solid {{PRIMARY}};
+    border-radius: 8px;
+}
+QFrame#Toast[kind="success"] { border-left-color: {{SUCCESS}}; }
+QFrame#Toast[kind="error"] { border-left-color: {{DANGER}}; }
+QFrame#Toast[kind="warning"] { border-left-color: {{WARNING}}; }
+QLabel#ToastTitle { font-size: 12px; font-weight: 700; color: {{TOAST_TEXT}}; }
+QLabel#ToastBody { font-size: 11px; color: {{MUTED}}; }
+
+/* ---------------- Busy overlay ---------------- */
+QFrame#BusyOverlay { background: {{BUSY_BG}}; border: none; }
+QLabel#BusyText { color: {{TEXT}}; font-size: 13px; font-weight: 600; }
+
+/* ---------------- Wizard ---------------- */
+QFrame#WizardSteps { background: transparent; border: none; }
+QLabel#WizardStep { color: {{MUTED}}; font-size: 11px; font-weight: 600; }
+QLabel#WizardStep[current="true"] { color: {{PRIMARY}}; font-weight: 700; }
+QLabel#WizardStep[done="true"] { color: {{SUCCESS}}; }
+QLabel#WizardTitle { font-size: 17px; font-weight: 700; color: {{TEXT}}; }

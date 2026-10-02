@@ -1,0 +1,38 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/icons">
+    <file alias="about">icons/about.svg</file>
+    <file alias="add">icons/add.svg</file>
+    <file alias="back">icons/back.svg</file>
+    <file alias="card">icons/card.svg</file>
+    <file alias="check">icons/check.svg</file>
+    <file alias="close">icons/close.svg</file>
+    <file alias="complaint">icons/complaint.svg</file>
+    <file alias="dashboard">icons/dashboard.svg</file>
+    <file alias="delete">icons/delete.svg</file>
+    <file alias="download">icons/download.svg</file>
+    <file alias="edit">icons/edit.svg</file>
+    <file alias="help">icons/help.svg</file>
+    <file alias="lock">icons/lock.svg</file>
+    <file alias="logout">icons/logout.svg</file>
+    <file alias="moon">icons/moon.svg</file>
+    <file alias="notice">icons/notice.svg</file>
+    <file alias="payment">icons/payment.svg</file>
+    <file alias="print">icons/print.svg</file>
+    <file alias="profile">icons/profile.svg</file>
+    <file alias="refresh">icons/refresh.svg</file>
+    <file alias="report">icons/report.svg</file>
+    <file alias="search">icons/search.svg</file>
+    <file alias="seat">icons/seat.svg</file>
+    <file alias="settings">icons/settings.svg</file>
+    <file alias="shield">icons/shield.svg</file>
+    <file alias="staff">icons/staff.svg</file>
+    <file alias="sun">icons/sun.svg</file>
+    <file alias="transport">icons/transport.svg</file>
+    <file alias="upload">icons/upload.svg</file>
+    <file alias="users">icons/users.svg</file>
+    <file alias="warning">icons/warning.svg</file>
+</qresource>
+<qresource prefix="/styles">
+    <file alias="app">styles/app.qss</file>
+</qresource>
+</RCC>

@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "name": "StudentTransport",
+      "includePath": [
+        "${workspaceFolder}/StudentTransport/include",
+        "${workspaceFolder}/StudentTransport/tests"
+      ],
+      "browse": {
+        "limitSymbolsToIncludedHeaders": true,
+        "path": [
+          "${workspaceFolder}/StudentTransport/include"
+        ]
+      },
+      "compilerPath": "/usr/bin/g++",
+      "compilerArgs": [
+        "-std=c++17"
+      ],
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "linux-gcc-x64"
+    }
+  ],
+  "version": 4
+}

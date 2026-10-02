@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake: Configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-S", "${workspaceFolder}/StudentTransport",
+        "-B", "${workspaceFolder}/StudentTransport/build",
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
+      "problemMatcher": [],
+      "detail": "Generate the CMake build tree for StudentTransport."
+    },
+    {
+      "label": "CMake: Build",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "${workspaceFolder}/StudentTransport/build", "--parallel"],
+      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
+      "dependsOn": "CMake: Configure",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"],
+      "detail": "Build transport_system and the six test binaries."
+    },
+    {
+      "label": "CMake: Test",
+      "type": "shell",
+      "command": "ctest",
+      "args": ["--test-dir", "${workspaceFolder}/StudentTransport/build", "--output-on-failure"],
+      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
+      "dependsOn": "CMake: Build",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": [],
+      "detail": "Run all six test suites."
+    },
+    {
+      "label": "CMake: Configure Release",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-S", "${workspaceFolder}/StudentTransport",
+        "-B", "${workspaceFolder}/StudentTransport/build-release",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
+      "problemMatcher": []
+    }
+  ]
+}
