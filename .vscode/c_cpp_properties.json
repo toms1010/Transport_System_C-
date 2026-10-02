@@ -3,13 +3,18 @@
     {
       "name": "StudentTransport",
       "includePath": [
-        "${workspaceFolder}/StudentTransport/include",
-        "${workspaceFolder}/StudentTransport/tests"
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/tests",
+        "${workspaceFolder}/gui",
+        "/usr/include/x86_64-linux-gnu/qt6",
+        "/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+        "/usr/include/x86_64-linux-gnu/qt6/QtGui",
+        "/usr/include/x86_64-linux-gnu/qt6/QtCore"
       ],
       "browse": {
         "limitSymbolsToIncludedHeaders": true,
         "path": [
-          "${workspaceFolder}/StudentTransport/include"
+          "${workspaceFolder}/include"
         ]
       },
       "compilerPath": "/usr/bin/g++",
@@ -18,7 +23,10 @@
       ],
       "cStandard": "c11",
       "cppStandard": "c++17",
-      "intelliSenseMode": "linux-gcc-x64"
+      "intelliSenseMode": "linux-gcc-x64",
+      "defines": [
+        "QT_WIDGETS_LIB"
+      ]
     }
   ],
   "version": 4

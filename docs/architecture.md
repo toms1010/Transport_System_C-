@@ -2,7 +2,7 @@
 
 ## Layers
 
-```
+```text
 Presentation  ->  Service  ->  Repository  ->  Storage
  (ConsoleUI,      (Auth,       (Csv*Repo)      data/*.csv
   Menu,           Route,       )
@@ -21,7 +21,7 @@ service knows the CSV layout.
 Plain data holders with behaviour that belongs to the entity, and no I/O.
 
 | Type | Responsibility |
-|------|----------------|
+| ------ | ---------------- |
 | `User` | Base account: identity, contact, credentials, role. Abstract (`clone()` is pure virtual). |
 | `Student` | A `User` that is enrolled in transport. Owns route, seat and the two fee buckets. |
 | `Staff` | A `User` with an assigned route. |
@@ -48,9 +48,13 @@ and `\r`, writes atomically via a temp file plus rename, and tolerates malformed
 rows by skipping them.
 
 - `CsvUserRepository`
+
 - `CsvRouteRepository` (also seeds the five default routes on first run)
+
 - `CsvPaymentRepository`
+
 - `CsvComplaintRepository`
+
 - `CsvNoticeRepository`
 
 To move to SQLite, reimplement these classes against a `sqlite3` handle. No
@@ -62,7 +66,7 @@ Business rules. Each service owns an in-memory cache loaded at start-up and
 written back on mutation.
 
 | Service | Rules it owns |
-|---------|---------------|
+| --------- | --------------- |
 | `AuthService` | credential verification, registration rules, role checks, session creation, balance rehydration from the payment journal |
 | `RouteService` | route CRUD, capacity floor, occupancy, free-seat computation |
 | `SeatService` | the ONLY writer of a student's seat; duplicate prevention; atomic route changes with rollback |
@@ -114,21 +118,27 @@ coerce.
 
 - `ConsoleUI` — platform-neutral terminal primitives: raw mode, key decoding,
   sizing, colour, masked input, multiline input.
+
 - `Menu` — banners, rules, fields, tables, status tags, the bottom footer, and
   the arrow-key menu (which owns and repaints its own screen).
+
 - `Screens` — the student, staff and admin flows; owns presentation only.
 
 ## Utilities (`include/utils`)
 
 - `TextUtils` — trim/case, split/join, money formatting, timestamps.
+
 - `CsvUtils` — field escaping and joining.
+
 - `FileUtils` — line read/write/append, atomic write, directory creation.
+
 - `Security` — password hashing, verification, constant-time comparison, policy.
+
 - `Validation` — every validation rule, in one place.
 
 ## Dependencies
 
-```
+```text
 main.cpp
   └─ Screens ──┬── AuthService ──┬── CsvUserRepository
                ├── RouteService ─┴── CsvRouteRepository
@@ -148,10 +158,14 @@ no hidden global state.
 - Passwords are stored as a per-user salted digest. **This is not a production
   KDF.** `Security` is deliberately isolated so Argon2, bcrypt, scrypt or PBKDF2
   can replace the implementation in a single file. See the header comment.
+
 - Digest comparison is constant time.
+
 - Hashes and salts are never printed by any screen.
+
 - Staff registration requires an authorization code, so a student cannot grant
   themselves elevated privileges by choosing a different role at the form.
+
 - Accounts are deactivated through an `active` flag rather than deleted, which
   preserves the complaint and payment history that references them.
 
@@ -168,6 +182,7 @@ Two consequences, both deliberate:
   past the top of a short terminal the cursor no longer sat below it, so each
   redraw left a duplicate copy of the menu behind. Absolute addressing cannot
   drift.
+
 - **Anything a caller wants visible must be passed in.** `MenuOptions::context`
   carries the dashboard summary, because printing it before calling `menu()`
   would be erased by the first redraw.
@@ -180,20 +195,24 @@ being truncated, and long text is trimmed with a `~` marker.
 
 - Directory creation uses `std::filesystem::create_directories`, not
   `system("mkdir -p data")`.
+
 - Windows colour uses `ENABLE_VIRTUAL_TERMINAL_PROCESSING`; key reading uses
   `_getch` with the 0/224 extended-code prefix.
+
 - POSIX raw mode uses `termios`; arrow keys arrive as `\033[A`-style sequences
   and are decoded with a short `select` timeout.
+
 - `\n` and `\r` are both mapped to `Key::Enter`. The original code treated `\n`
   as "move down", so a pasted Enter silently changed the highlighted menu item.
+
 ---
 
-# Desktop front end
+## Desktop front end
 
 The Qt Widgets application is a second front end over the same domain layer. It
 adds no business rules; it moves the presentation and the user interaction.
 
-```
+```text
    ┌─────────────────────────────┐        ┌─────────────────────────────┐
    │ console: src/ui/*.cpp       │        │ desktop: gui/*.cpp          │
    │ ConsoleUI · Menu · Screens  │        │ Windows · Pages · Dialogs   │
@@ -211,7 +230,7 @@ adds no business rules; it moves the presentation and the user interaction.
 ## Build targets
 
 | Target | Links | Purpose |
-|--------|-------|---------|
+| -------- | ------- | --------- |
 | `transport_domain` | — | Models, repositories, services, utils. No console code, no Qt. |
 | `transport_core` | `transport_domain` | Adds `src/ui/`, the console front end. |
 | `transport_system` | `transport_core` | The console executable. |
@@ -222,11 +241,11 @@ adds no business rules; it moves the presentation and the user interaction.
 desktop application would carry `iostream` and terminal code it never uses, and
 the layering that keeps the domain reusable would stop meaning anything.
 
-## The controller layer
+### The controller layer
 
 `include/controllers/` and `gui/controllers/` sit between widgets and services.
 
-```
+```text
 widgets → Controllers → services → repositories → CSV
 ```
 
@@ -244,7 +263,7 @@ original project had a single `due` field that the total re-added a
 registration fee to, which is exactly the class of bug a shared computation
 prevents.
 
-## Why the GUI does not own a `SeatRepository`
+### Why the GUI does not own a `SeatRepository`
 
 The domain has no seat repository, and that is deliberate rather than an
 omission. Seat ownership lives on the `Student` record (`routeId` +
@@ -253,17 +272,19 @@ separate `seats.csv` would introduce a second source of truth and make
 "one seat, one student" impossible to guarantee. Occupancy is therefore always
 derived by asking which students hold which seat.
 
-## Dependency direction
+### Dependency direction
 
 - Domain → nothing above it. No Qt, no console, no knowledge of either front end.
+
 - Controllers → domain, plus Qt's `QString` for view structs.
+
 - Widgets → controllers. A page never includes a service header.
 
 `AppContext` is the one place that knows all the services exist, which is what
 keeps construction explicit and avoids a service locator sprinkled through the
 pages.
 
-## Data directory
+### Data directory
 
 Both front ends read and write the same CSV files. The GUI resolves the folder
 from `ST_DATA_DIR`, then `./data`, then `../data`, because a desktop binary can

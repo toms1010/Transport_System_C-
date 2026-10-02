@@ -1,0 +1,22 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD033": {
+    "allowed_elements": [
+      "b",
+      "br",
+      "code",
+      "details",
+      "em",
+      "i",
+      "img",
+      "strong",
+      "sub",
+      "summary",
+      "sup"
+    ]
+  },
+  "MD060": {
+    "style": "padded"
+  }
+}

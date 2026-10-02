@@ -2,12 +2,31 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug transport_gui (desktop)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/transport_gui",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
       "name": "Debug transport_system",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/StudentTransport/build/bin/transport_system",
+      "program": "${workspaceFolder}/build/bin/transport_system",
       "args": [],
-      "cwd": "${workspaceFolder}/StudentTransport",
+      "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
       "externalConsole": false,
       "MIMode": "gdb",
@@ -24,9 +43,9 @@
       "name": "Debug a test suite",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/StudentTransport/build/bin/test_robustness",
+      "program": "${workspaceFolder}/build/bin/test_robustness",
       "args": [],
-      "cwd": "${workspaceFolder}/StudentTransport",
+      "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
       "externalConsole": false,
       "MIMode": "gdb",

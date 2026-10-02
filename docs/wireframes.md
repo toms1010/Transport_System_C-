@@ -8,7 +8,7 @@ columns). Menus highlight with `▶` and redraw in place. Status tags are
 
 ## 1. Main menu
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                             CBIT TRANSPORT MANAGEMENT
                         CBIT  •  Transport Cell, Hyderabad
@@ -31,7 +31,7 @@ columns). Menus highlight with `▶` and redraw in place. Status tags are
 On narrow terminals the box, table columns and key hint shrink to fit, and long
 values are trimmed with a trailing `~` rather than wrapping:
 
-```
+```text
   ID   PATH                       VIA                 FARE       SEATS   FREE
   ──────────────────────────────────────────────────────────────────────────────
   R1   Ameerpet -> Uppal          Kachiguda, Secunder~Rs 9,000   12/30   18
@@ -39,7 +39,7 @@ values are trimmed with a trailing `~` rather than wrapping:
 
 ## 2. Login
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                     LOGIN
                                Sign in as STUDENT
@@ -53,7 +53,7 @@ values are trimmed with a trailing `~` rather than wrapping:
 
 On success:
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                STUDENT DASHBOARD
                                   Asha Rao
@@ -62,7 +62,7 @@ On success:
 
 ## 3. Registration
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                  REGISTRATION
                                Student account
@@ -97,7 +97,7 @@ On success:
 
 Staff adds one step:
 
-```
+```text
   [WARNING] Staff accounts require the authorization code issued by the
             transport office.
   Authorization code       ********
@@ -105,7 +105,7 @@ Staff adds one step:
 
 ## 4. Student dashboard
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                               STUDENT DASHBOARD
                                  Asha Rao
@@ -135,7 +135,7 @@ Staff adds one step:
 
 ## 5. Route selection
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                  ROUTE & SEAT
                                  Asha Rao
@@ -154,7 +154,7 @@ Staff adds one step:
 
 Public route list:
 
-```
+```text
                                  ROUTES & FARES
   ──────────────────────────────────────────────────────────────────────────────
   ID   PATH                       VIA                 FARE       SEATS   FREE
@@ -170,7 +170,7 @@ Public route list:
 
 ## 6. Seat selection
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                 SELECT A SEAT
                             R1  Ameerpet -> Uppal
@@ -197,7 +197,7 @@ Public route list:
 
 ## 7. Payments and dues
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                PAYMENTS & DUES
                                  Asha Rao
@@ -234,7 +234,7 @@ Public route list:
 
 Statement view (used by the staff-side report):
 
-```
+```text
   Payment & Dues  Asha Rao
   ──────────────────────────────────────────────────────────────────────────────
   Student ID              STU0001
@@ -249,7 +249,7 @@ Statement view (used by the staff-side report):
 
 ## 8. Allotment card
 
-```
+```text
                               ALLOTMENT CARD
                                  Asha Rao
   ──────────────────────────────────────────────────────────────────────────────
@@ -270,7 +270,7 @@ Statement view (used by the staff-side report):
 
 Student view:
 
-```
+```text
                               MY COMPLAINTS
                                  Asha Rao
 
@@ -290,7 +290,7 @@ Student view:
 
 Staff view:
 
-```
+```text
                                STAFF DASHBOARD
                               Transport Staff
   ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -321,7 +321,7 @@ Staff view:
 
 My Route Assignment:
 
-```
+```text
                               MY ROUTE ASSIGNMENT
                                 Kiran Rao
 
@@ -341,7 +341,7 @@ My Route Assignment:
 
 Student roster:
 
-```
+```text
                                STUDENT ROSTER
   ──────────────────────────────────────────────────────────────────────────────
   ID       USERNAME  NAME                  PHONE        ROUTE  SEAT  OUTSTANDING  STATUS
@@ -355,7 +355,7 @@ Student roster:
 
 ## 10. Admin dashboard
 
-```
+```text
                                ADMIN DASHBOARD
                            Transport Administrator
   ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -382,7 +382,7 @@ Student roster:
 
 ## 11. Notices
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                NOTICE BOARD
                               Transport Staff
@@ -411,7 +411,7 @@ Student roster:
 
 ## 12. Reports
 
-```
+```text
                                  REPORTS
                               Transport Staff
 
@@ -430,7 +430,7 @@ Student roster:
 
 ## 13. First run
 
-```
+```text
   ╔══════════════════════════════════════════════════════════════════════════════╗
                                FIRST RUN SETUP
                         CBIT  •  Transport Cell, Hyderabad
@@ -441,9 +441,10 @@ Student roster:
   Password                admin123
   [WARNING] Change this password immediately after signing in.
 ```
+
 ---
 
-# Desktop (Qt Widgets) wireframes
+## Desktop (Qt Widgets) wireframes
 
 The screens below are the Qt front end. They carry the same features as the
 console flow above; the differences are the things a mouse-driven interface can
@@ -452,7 +453,7 @@ toasts, printing and a second theme.
 
 ## Window shell
 
-```
+```text
 ┌───────────────┬────────────────────────────────────────────────────────┐
 │ CBIT          │ Dashboard                              ☾       TA       │
 │ TRANSPORT     │                          Transport Administrator     │
@@ -473,16 +474,16 @@ toasts, printing and a second theme.
 │               │  │ 02 October 2026       │ │ Seat problem   OPEN  │  │
 │ ⇥ Sign out    │  └───────────────────────┘ └───────────────────────┘  │
 ├───────────────┴────────────────────────────────────────────────────────┤
-│ Data folder: /home/you/StudentTransport/data                          │
+│ Data folder: ~/Transport_System_C++/data                             │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
 Sidebar width is fixed at 244px; everything to its right is a layout that
 reflows. Minimum window 1120×680.
 
-## Student — seat map
+### Student — seat map
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ My transport                                                           │
 │ Pick a route, then click a free seat and claim it.                     │
@@ -511,12 +512,12 @@ reflows. Minimum window 1120×680.
 Occupied seats are disabled and greyed. Clicking a free seat turns it indigo;
 the confirm button appears only while a free seat is selected.
 
-## Staff — seat allocation
+### Staff — seat allocation
 
 Same grid, plus a student selector on the right and three actions. Staff see
 whose seat they are about to change before they change it.
 
-```
+```text
 │ Seat map                                                             │
 │ Route [ R1 ▼ ]            Student [ Ananya Sharma (@ananya) · seat 9 ▼]│
 │ ┌────────────────────────────────────┬──────────────────────────────┐ │
@@ -529,9 +530,9 @@ whose seat they are about to change before they change it.
 │ └────────────────────────────────────┴──────────────────────────────┘ │
 ```
 
-## Payments — student view
+### Payments — student view
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ Payments & dues                                                        │
 │ Registration and transport fees are separate balances, so a payment      │
@@ -558,9 +559,9 @@ whose seat they are about to change before they change it.
 Each fee bucket has its own progress bar, because registration and transport are
 settled independently.
 
-## Reports
+### Reports
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ Reports                                    [ ⬇ Export payment ledger ] │
 │ ┌────────────────────────────────────────────────────────────────────┐ │
@@ -585,9 +586,9 @@ settled independently.
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Registration wizard
+### Registration wizard
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ Create a student account                                               │
 │ Pick a route and a seat as part of signing up.                         │
@@ -607,9 +608,9 @@ Step 3 opens a route picker (cards showing fare, capacity and free seats) and
 then a seat grid. The account is written on the final step only, so abandoning
 the wizard leaves no half-created account behind.
 
-## Login
+### Login
 
-```
+```text
 ┌──────────────────────────────────────────────┐
 │  🚌                                        │
 │  Student Transport                         │
@@ -631,7 +632,7 @@ the wizard leaves no half-created account behind.
 The three links at the bottom open the public window — routes, notices and about
 are readable without an account.
 
-## Settings, dark mode, notifications
+### Settings, dark mode, notifications
 
 Settings holds the theme switch, the data folder, and backup and restore.
 Restore refuses a partial backup rather than half-replacing the dataset.
@@ -639,7 +640,7 @@ Restore refuses a partial backup rather than half-replacing the dataset.
 Toasts appear bottom-right and fade after about three seconds. Modals are
 reserved for destructive actions, and every one defaults to Cancel:
 
-```
+```text
         ┌──────────────────────────────────────┐
         │ ⚠ Delete route                      │
         ├──────────────────────────────────────┤

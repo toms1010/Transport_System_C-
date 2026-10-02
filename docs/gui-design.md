@@ -6,7 +6,7 @@ the desktop application only.
 
 ## Layering
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────────┐
 │ GUI LAYER      widgets, dialogs, pages                           │
 │                DashboardPage · SeatMapPage · PaymentsPage · …     │
@@ -27,7 +27,7 @@ the desktop application only.
 The controller layer exists so that no widget ever calls a service directly.
 A page slot reads like a description of a user gesture, not a procedure:
 
-```cpp
+```text
 void PaymentsPage::settleBucket() {
     if (!confirm(QStringLiteral("Settle in full"), ...)) return;
     ReceiptView receipt;
@@ -43,8 +43,10 @@ Three consequences worth keeping:
 - **All rules stay in one place.** "Outstanding" is computed in
   `PaymentController::statement`, so the dashboard, the payments page and the
   reports page cannot disagree.
+
 - **Controllers are stateless.** Each one holds a reference to `AppContext` and
   nothing else, so they are cheap to construct and safe to share.
+
 - **Services stay Qt-free.** The console front end and the 69 tests keep
   compiling against exactly the same code as before the GUI existed.
 
@@ -62,7 +64,7 @@ contain layout and event wiring only.
 `QStackedWidget` of pages. The label list is derived from the session role:
 
 | Role | Navigation |
-|------|------------|
+| ------ | ------------ |
 | Student | Dashboard, My transport, Payments & dues, My complaints, Notice board, Allotment card, My profile, Help & contact, Settings |
 | Staff | Dashboard, Students, Routes, Seat map, Payments & dues, Complaints, Notices, Reports, My profile, Help & contact, Settings |
 | Admin | as Staff, plus Staff accounts |
@@ -76,12 +78,13 @@ Two details that are easy to get wrong:
 - `QButtonGroup::buttonClicked` is emitted **by the group**, so `sender()` inside
   the slot is the group and not the button. The slot takes the button as a
   parameter.
+
 - `setChecked()` does not emit `buttonClicked`, so the opening page is refreshed
   explicitly after construction.
 
 Pages can hand control to a sibling without knowing about `MainWindow`:
 
-```cpp
+```text
 if (auto* page = siblingPage<SeatMapPage>()) {
     page->selectStudent(id);
     activate(page);
@@ -113,6 +116,7 @@ Two channels, deliberately separated:
 - **Toasts** (`Notify.hpp`) for routine outcomes — a payment recorded, a seat
   assigned, a notice published. Auto-dismiss after ~3.2s with a fade, stacked
   bottom-right, colour-coded by `kind`.
+
 - **Modal dialogs** for anything destructive or critical: deleting a route,
   restoring a backup, signing out. Every destructive action goes through
   `Page::confirm`, which styles the buttons and defaults to Cancel.
@@ -133,10 +137,14 @@ twice.
 
 - Tab order follows creation order; the seat grid is a grid of real buttons, so
   arrow keys and Tab both work.
+
 - Every control has a text label. Icons are supplementary, never the only cue.
+
 - Focus is visible: `QPushButton:focus` and the input `:focus` rules both set a
   primary-coloured border.
+
 - Escape closes dialogs; Enter submits login, password change and payment forms.
+
 - Status is never conveyed by colour alone — every status cell also carries a
   word such as `Paid`, `Dues pending` or `Open`.
 

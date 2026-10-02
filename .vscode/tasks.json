@@ -6,47 +6,74 @@
       "type": "shell",
       "command": "cmake",
       "args": [
-        "-S", "${workspaceFolder}/StudentTransport",
-        "-B", "${workspaceFolder}/StudentTransport/build",
+        "-S",
+        "${workspaceFolder}",
+        "-B",
+        "${workspaceFolder}/build",
         "-DCMAKE_BUILD_TYPE=Debug"
       ],
-      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
-      "problemMatcher": [],
-      "detail": "Generate the CMake build tree for StudentTransport."
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
     },
     {
       "label": "CMake: Build",
       "type": "shell",
       "command": "cmake",
-      "args": ["--build", "${workspaceFolder}/StudentTransport/build", "--parallel"],
-      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
+      "args": [
+        "--build",
+        "${workspaceFolder}/build",
+        "--parallel"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "dependsOn": "CMake: Configure",
-      "group": { "kind": "build", "isDefault": true },
-      "problemMatcher": ["$gcc"],
-      "detail": "Build transport_system and the six test binaries."
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
     },
     {
       "label": "CMake: Test",
       "type": "shell",
       "command": "ctest",
-      "args": ["--test-dir", "${workspaceFolder}/StudentTransport/build", "--output-on-failure"],
-      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
+      "args": [
+        "--test-dir",
+        "${workspaceFolder}/build",
+        "--output-on-failure"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "dependsOn": "CMake: Build",
-      "group": { "kind": "test", "isDefault": true },
-      "problemMatcher": [],
-      "detail": "Run all six test suites."
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
     },
     {
-      "label": "CMake: Configure Release",
+      "label": "Run desktop GUI",
       "type": "shell",
-      "command": "cmake",
-      "args": [
-        "-S", "${workspaceFolder}/StudentTransport",
-        "-B", "${workspaceFolder}/StudentTransport/build-release",
-        "-DCMAKE_BUILD_TYPE=Release"
-      ],
-      "options": { "cwd": "${workspaceFolder}/StudentTransport" },
-      "problemMatcher": []
+      "command": "${workspaceFolder}/build/bin/transport_gui",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "CMake: Build",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
     }
   ]
 }
